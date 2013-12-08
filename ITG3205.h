@@ -12,6 +12,8 @@ class ITG3205 {
 #define DLPF_FS 0x16
 #define INT_CFG 0x17
 
+#define LSB_DEG 14.375
+
 
 #define TEMP_OUT_H 0x1B
 #define TEMP_OUT_L 0x1C
@@ -25,7 +27,9 @@ class ITG3205 {
 #define GYRO_ZOUT_H 0x21
 #define GYRO_ZOUT_L 0x22
 
+    byte address;
 public:
+    ITG3205(): address(ITG3200_Address) {}
     typedef struct vector
     {
         int x, y, z, t;
@@ -33,11 +37,20 @@ public:
 
     vector g; // gyro angular velocity readings
 
+    int offset[3];
+
+    void calibrate();
     void initGyro();
     void GyroRead();
 
 
     byte WriteByte(byte i2c_address, byte address, byte data);
+
+    void readGyroRaw(int *x, int *y, int *z);
+
+    int readShortI2C();
+
+    int readWordI2C();
 };
 
 
