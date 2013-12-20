@@ -1,3 +1,5 @@
+#include "config.h"
+
 #include <Wire.h>
 #include "ITG3205.h"
 
@@ -76,8 +78,7 @@ byte ITG3205::WriteByte(byte i2c_address, byte address, byte data) {
 
     //do some error checking
     if (result > 0) {
-        Serial.print("I2C Write PROBLEM..... Result code is ");
-        Serial.println(result);
+        debug((char *)result, "I2C Write PROBLEM..... Result code is ");
     }
     return result;
 }
