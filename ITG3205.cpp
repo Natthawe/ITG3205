@@ -76,9 +76,11 @@ byte ITG3205::WriteByte(byte i2c_address, byte address, byte data) {
     Wire.write(data);
     byte result = Wire.endTransmission();
 
+    #if DEBUG_SENSORS_ENABLE
     //do some error checking
     if (result > 0) {
-        debug((char *)result, "I2C Write PROBLEM..... Result code is ");
+        debug((char *)result, "I2C Write PROBLEM:");
     }
+    #endif
     return result;
 }
