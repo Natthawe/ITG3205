@@ -8,7 +8,7 @@ void ITG3205::initGyro() {
     WriteByte(address, PWR_MGM, 0x00);
     WriteByte(address, SMPLRT_DIV, 0x07); //Fsample = 1kHz / (7 + 1) = 125Hz, or 8ms per sample
     //WriteByte(address, DLPF_FS, 0x1E); // +/- 2000 dgrs/sec, 1KHz, Low Pass Filter Bandwidth: 5Hz
-    WriteByte(address, DLPF_FS, 0x1D); // +/- 2000 dgrs/sec, 1KHz, Low Pass Filter Bandwidth: 10Hzh
+    WriteByte(address, DLPF_FS, 0x1B); // +/- 2000 dgrs/sec, 1KHz, Low Pass Filter Bandwidth: 98Hzh
     //WriteByte(address, DLPF_FS, 0x18); // +/- 2000 dgrs/sec, 8KHz, Low Pass Filter Bandwidth: 256Hz
     WriteByte(address, INT_CFG, 0x00);
 }
